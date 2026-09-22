@@ -827,6 +827,7 @@
         "requestQueueSize": "单一 Peer 的最大未完成请求",
         "security": {
           "allowMultipleConnectionsFromTheSameIPAddress": "允许来自同一 IP 地址的多个连接",
+          "allowMultipleConnectionsFromTheSamePeerID": "允许来自同一 Peer ID 的多个连接",
           "blockPeersOnPrivilegedPorts": "禁止连接到特权端口上的 Peer",
           "idnSupport": "启用国际化域名 (IDN) 支持",
           "mitigateSSRF": "服务器端请求伪造 (SSRF) 缓解",

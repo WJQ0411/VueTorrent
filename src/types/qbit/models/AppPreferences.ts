@@ -139,6 +139,8 @@ export default interface AppPreferences {
   enable_embedded_tracker: boolean
   /** True allows multiple connections from the same IP address */
   enable_multi_connections_from_same_ip: boolean
+  /** True allows multiple connections from the same Peer ID */
+  enable_multi_connections_from_same_peer_id: boolean
   /** True if the advanced libtorrent option piece_extent_affinity is enabled */
   enable_piece_extent_affinity: boolean
   /** True enables sending of upload piece suggestions */

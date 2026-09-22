@@ -838,6 +838,7 @@
         "requestQueueSize": "Maximum outstanding requests to a single peer",
         "security": {
           "allowMultipleConnectionsFromTheSameIPAddress": "Allow multiple connections from the same IP address",
+          "allowMultipleConnectionsFromTheSamePeerID": "Allow multiple connections from the same Peer ID",
           "blockPeersOnPrivilegedPorts": "Disallow connection to peers on privileged ports",
           "idnSupport": "Enable Internationalized Domain Name (IDN) support",
           "mitigateSSRF": "Server-side request forgery (SSRF) mitigation",

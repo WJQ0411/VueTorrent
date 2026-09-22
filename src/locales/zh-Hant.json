@@ -732,6 +732,7 @@
         "requestQueueSize": "對單個用戶的最多未完成請求",
         "security": {
           "allowMultipleConnectionsFromTheSameIPAddress": "允許從同一個 IP 位置而來的多重連線",
+          "allowMultipleConnectionsFromTheSamePeerID": "允許從同一個 Peer ID 而來的多重連線",
           "blockPeersOnPrivilegedPorts": "不允許連線到在特權連接埠上的用戶",
           "idnSupport": "啟用國際化域名 (IDN)支援",
           "mitigateSSRF": "伺服器端請求偽造 (SSRF) 緩解",

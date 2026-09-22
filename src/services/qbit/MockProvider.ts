@@ -260,6 +260,7 @@ export default class MockProvider implements IProvider {
         enable_coalesce_read_write: false,
         enable_embedded_tracker: false,
         enable_multi_connections_from_same_ip: false,
+        enable_multi_connections_from_same_peer_id: false,
         enable_piece_extent_affinity: false,
         enable_upload_suggestions: false,
         encryption: 0,
