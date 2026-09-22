@@ -1,11 +1,13 @@
 import { acceptHMRUpdate, defineStore } from 'pinia'
 import { computed, ref } from 'vue'
+import { compareVersions } from '@/helpers'
 import qbit from '@/services/qbit'
 import { BuildInfo } from '@/types/qbit/models'
 
 export const useAppStore = defineStore('app', () => {
   const isAuthenticated = ref(false)
   const version = ref('0.0.0')
+  const webApiVersion = ref('0.0.0')
   const buildInfo = ref<BuildInfo>()
 
   const usesQbit5 = computed(() => isFeatureAvailable('5'))
@@ -24,9 +26,11 @@ export const useAppStore = defineStore('app', () => {
 
     if (val) {
       version.value = ver || (await qbit.getVersion())
+      webApiVersion.value = await qbit.getWebAPIVersion().catch(() => '0.0.0')
       buildInfo.value = await qbit.getBuildInfo()
     } else {
       version.value = '0.0.0'
+      webApiVersion.value = '0.0.0'
       buildInfo.value = undefined
     }
   }
@@ -34,6 +38,10 @@ export const useAppStore = defineStore('app', () => {
   function isFeatureAvailable(required_version?: string) {
     if (!required_version) return true
     return version.value >= required_version
+  }
+
+  function isWebApiVersionAtLeast(required_version: string) {
+    return compareVersions(webApiVersion.value, required_version) >= 0
   }
 
   async function login(username: string, password: string) {
@@ -62,6 +70,7 @@ export const useAppStore = defineStore('app', () => {
   return {
     isAuthenticated,
     version,
+    webApiVersion,
     buildInfo,
     usesQbit5,
     usesLibtorrent1,
@@ -69,6 +78,7 @@ export const useAppStore = defineStore('app', () => {
     fetchAuthStatus,
     setAuthStatus,
     isFeatureAvailable,
+    isWebApiVersionAtLeast,
     shutdownQbit,
     sendTestEmail,
     login,
@@ -77,6 +87,7 @@ export const useAppStore = defineStore('app', () => {
     $reset: async () => {
       buildInfo.value = undefined
       version.value = '0.0.0'
+      webApiVersion.value = '0.0.0'
       await logout()
     },
   }

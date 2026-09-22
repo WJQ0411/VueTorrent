@@ -22,6 +22,7 @@ import type {
   TorrentFile,
   TorrentProperties,
   Tracker,
+  WebAPIVersion,
 } from '@/types/qbit/models'
 import { NetworkInterface } from '@/types/qbit/models/AppPreferences'
 import type { AddTorrentPayload, AppPreferencesPayload, CreateFeedPayload, GetTorrentPayload, LoginPayload } from '@/types/qbit/payloads'
@@ -77,6 +78,10 @@ export default class QBitProvider implements IProvider {
       .get('/app/version')
       .then(res => res.data)
       .then(version => (version.includes('v') ? version.substring(1) : version))
+  }
+
+  async getWebAPIVersion(): Promise<WebAPIVersion> {
+    return this.axios.get('/app/webapiVersion').then(res => res.data)
   }
 
   async getPreferences(): Promise<AppPreferences> {

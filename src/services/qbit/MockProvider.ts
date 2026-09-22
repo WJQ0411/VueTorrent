@@ -34,6 +34,7 @@ import type {
   TorrentFile,
   TorrentProperties,
   Tracker,
+  WebAPIVersion,
 } from '@/types/qbit/models'
 import { NetworkInterface } from '@/types/qbit/models/AppPreferences'
 import type { AddTorrentPayload, GetTorrentPayload } from '@/types/qbit/payloads'
@@ -190,6 +191,10 @@ export default class MockProvider implements IProvider {
 
   async getVersion(): Promise<ApplicationVersion> {
     return this.generateResponse({ result: '5.1.0', delay: 50 })
+  }
+
+  async getWebAPIVersion(): Promise<WebAPIVersion> {
+    return this.generateResponse({ result: '2.16.0', delay: 50 })
   }
 
   async getPreferences(): Promise<AppPreferences> {

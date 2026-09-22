@@ -406,7 +406,7 @@ onBeforeMount(async () => {
             hide-details
             :label="t('settings.advanced.libtorrent.security.allowMultipleConnectionsFromTheSameIPAddress')" />
         </v-col>
-        <v-col cols="12" sm="6">
+        <v-col v-if="appStore.isWebApiVersionAtLeast('2.16.0')" cols="12" sm="6">
           <v-checkbox
             v-model="pref!.enable_multi_connections_from_same_peer_id"
             hide-details

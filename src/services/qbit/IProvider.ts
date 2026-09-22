@@ -19,6 +19,7 @@ import {
   TorrentFile,
   TorrentProperties,
   Tracker,
+  WebAPIVersion,
 } from '@/types/qbit/models'
 import { NetworkInterface } from '@/types/qbit/models/AppPreferences'
 import { AddTorrentPayload, AppPreferencesPayload, CreateFeedPayload, GetTorrentPayload, LoginPayload } from '@/types/qbit/payloads'
@@ -37,6 +38,11 @@ export default interface IProvider {
    * Get the application version
    */
   getVersion(): Promise<ApplicationVersion>
+
+  /**
+   * Get the WebAPI version
+   */
+  getWebAPIVersion(): Promise<WebAPIVersion>
 
   /**
    * Get the application settings
